@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>battleship1.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #5c6370; font-style: italic;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #d55fde; font-style: italic;}
+.s3 { color: #89ca78;}
+.s4 { color: #2bbac5;}
+.s5 { color: #d19a66;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+battleship1.py</font>
+</center></td></tr></table>
+<pre><span class="s0"># Luke Preston</span>
+<span class="s0">&quot;&quot;&quot;This program is designed to be a similar replication of the well known game 
+&quot;Battleship&quot;. 
+The program will correctly be able to take your guess of where you think the 
+opponents enemy ship is and will give you a &quot;HIT!&quot; or &quot;MISS&quot; response. 
+If you are finally able to sink your opponents battleship, the game will 
+finish and you will have won!&quot;&quot;&quot;</span>
+
+
+<span class="s2">def </span><span class="s1">main():</span>
+    <span class="s0"># Introduction &lt;&lt;&lt;&lt;</span>
+    <span class="s1">player_name = get_name()</span>
+
+    <span class="s0"># Experience &lt;&lt;&lt;&lt;</span>
+    <span class="s1">player_experience = (input(</span><span class="s3">&quot;Please enter </span><span class="s4">\&quot;</span><span class="s3">Yes</span><span class="s4">\&quot; </span><span class="s3">or </span><span class="s4">\&quot;</span><span class="s3">No</span><span class="s4">\&quot;</span><span class="s3">: &quot;</span><span class="s1">))</span>
+    <span class="s3">&quot;&quot;&quot; sep=&quot;--&gt;&quot; gets rid of the whitespace in between the two strings  
+    and places the arrow within the quotes &quot;&quot;&quot;</span>
+
+    <span class="s2">if </span><span class="s1">(player_experience == </span><span class="s3">&quot;Yes&quot;</span><span class="s1">):</span>
+        <span class="s1">print(</span><span class="s3">&quot;Great!&quot;</span><span class="s1">, </span><span class="s3">&quot; We have high hopes for you!&quot;</span><span class="s1">, sep=</span><span class="s3">&quot;--&gt;&quot;</span><span class="s1">)</span>
+    <span class="s2">elif not</span><span class="s1">(player_experience == </span><span class="s3">&quot;Yes&quot;</span><span class="s1">):</span>
+        <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;No worries! The goal of the game is to &quot;</span>
+              <span class="s3">&quot;sink your opponents battleship!&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span>
+            <span class="s3">&quot;We will go over the official rules of the game board very soon.&quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;For now, Let</span><span class="s4">\'</span><span class="s3">s go ahead and pick your team.&quot;</span><span class="s1">)</span>
+    <span class="s2">else</span><span class="s1">:</span>
+        <span class="s1">player_experience = (input(</span><span class="s3">&quot;Please enter </span><span class="s4">\&quot;</span><span class="s3">Yes</span><span class="s4">\&quot; </span><span class="s3">or </span><span class="s4">\&quot;</span><span class="s3">No</span><span class="s4">\&quot;</span><span class="s3">: &quot;</span><span class="s1">))</span>
+
+    <span class="s0"># Red or Blue Team &lt;&lt;&lt;&lt;</span>
+    <span class="s1">team_color = input(</span><span class="s3">&quot;Please pick your team. Red or Blue: &quot;</span><span class="s1">)</span>
+    <span class="s2">if </span><span class="s1">(team_color == </span><span class="s3">&quot;Red&quot;</span><span class="s1">):</span>
+        <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;Nice choice&quot;</span><span class="s1">, player_name + </span><span class="s3">&quot;.&quot;</span><span class="s1">,</span>
+              <span class="s3">&quot;You will be going against your arch rivals, the Blue Team.&quot;</span><span class="s1">)</span>
+    <span class="s2">elif not</span><span class="s1">(team_color == </span><span class="s3">&quot;Red&quot;</span><span class="s1">):</span>
+        <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+        <span class="s1">print(</span><span class="s3">&quot;Great pick&quot;</span><span class="s1">, player_name + </span><span class="s3">&quot;.&quot;</span><span class="s1">,</span>
+              <span class="s3">&quot;You will be going against your arch rivals, the Red Team.&quot;</span><span class="s1">)</span>
+    <span class="s2">else</span><span class="s1">:</span>
+        <span class="s3">&quot;&quot;&quot; The int(3) prints the &quot;Error&quot; message three times because 
+        it is being multiplied &quot;&quot;&quot;</span>
+
+        <span class="s1">print(</span><span class="s3">&quot;Error! &quot; </span><span class="s1">* int(</span><span class="s5">3</span><span class="s1">), </span><span class="s3">&quot;Please restart the program&quot;</span><span class="s1">)</span>
+
+    <span class="s0"># Game board layout &amp; Getting Started &lt;&lt;&lt;&lt;</span>
+    <span class="s1">continue_key = input(</span><span class="s3">&quot;Press any key to continue!: &quot;</span><span class="s1">)</span>
+    <span class="s0"># End=&quot; &quot; provides a space for the variable x between the two strings</span>
+    <span class="s1">x = </span><span class="s3">&quot;LETS BEGIN:&quot;</span>
+    <span class="s1">print(x, end=</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot;Now that you</span><span class="s4">\'</span><span class="s3">re all set up, let</span><span class="s4">\'</span><span class="s3">s show you the game board!&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+    <span class="s1">number = </span><span class="s5">0</span>
+    <span class="s2">while </span><span class="s1">(number &lt; </span><span class="s5">100</span><span class="s1">) </span><span class="s2">and </span><span class="s1">(number &gt;= </span><span class="s5">0</span><span class="s1">):</span>
+        <span class="s1">number = number + </span><span class="s5">1</span>
+        <span class="s1">print(</span><span class="s3">&quot;Loading:&quot;</span><span class="s1">, number, </span><span class="s3">&quot;%&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot;Finished.&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+
+    <span class="s3">&quot;&quot;&quot; The game_board variable holds the string 0 and multiplies that  
+    string by 6. While being introduced to the range function that  
+    creates 6 rows. Therefore creating a 6x6 game board which  
+    is exactly what we want. &quot;&quot;&quot;</span>
+
+    <span class="s1">game_board = (</span><span class="s3">&quot; 0 &quot; </span><span class="s1">* </span><span class="s5">6</span><span class="s1">)</span>
+    <span class="s1">list_layout = game_board</span>
+    <span class="s1">print_board(list_layout)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+     <span class="s0"># Game board instructions &lt;&lt;&lt;&lt;</span>
+    <span class="s1">print(</span><span class="s3">&quot;This is where you will &quot; </span><span class="s1">+ </span><span class="s3">&quot;guess your strikes!&quot;</span><span class="s1">)</span>
+    <span class="s0"># The + is joins the two strings together in this example</span>
+    <span class="s1">print(</span>
+        <span class="s3">&quot;As you can see this is a 6x&quot; </span><span class="s1">+ </span><span class="s3">&quot;6 game board, there are 36 different &quot;</span>
+                                        <span class="s3">&quot;spots you can guess.&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+
+    <span class="s1">print(</span><span class="s3">&quot;You will go about guessing by choosing horizontally first, &quot;</span>
+          <span class="s3">&quot;counting from the bottom left 0.&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot;From there you will be able to guess vertically, counting from the &quot;</span>
+          <span class="s3">&quot;bottom to the top of the board.&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+
+
+    <span class="s1">print(</span><span class="s3">&quot;Here</span><span class="s4">\'</span><span class="s3">s an example of the list of events that will take place &quot;</span>
+          <span class="s3">&quot;when guessing:&quot;</span><span class="s1">)</span>
+
+    <span class="s0"># Game board example &lt;&lt;&lt;&lt;</span>
+    <span class="s1">print(</span><span class="s3">&quot;  &quot;</span><span class="s1">)</span>
+
+    <span class="s1">print(</span><span class="s3">&quot;For the example level we will start by giving you a clue &quot;</span>
+          <span class="s3">&quot;to see where the ship lies.&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+
+    <span class="s1">print(</span><span class="s3">&quot;Your opponents ship is in 3 spots of one of these &quot;</span>
+          <span class="s3">&quot;odd numbered rows horizontally: &quot;</span><span class="s1">)</span>
+
+    <span class="s3">&quot;&quot;&quot; The % checks to see if there is a remainder not equal 
+    to 0 to make sure its an odd function. &quot;&quot;&quot;</span>
+
+    <span class="s2">for </span><span class="s1">number </span><span class="s2">in </span><span class="s1">range(</span><span class="s5">0</span><span class="s1">, </span><span class="s5">6</span><span class="s1">):</span>
+        <span class="s2">if </span><span class="s1">(number % </span><span class="s5">2 </span><span class="s1">!= </span><span class="s5">0</span><span class="s1">):</span>
+            <span class="s1">print(number)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span>
+        <span class="s3">&quot;But your opponents ship could also be in 3 spots of one of these &quot;</span>
+        <span class="s3">&quot;even numbered rows vertically: &quot;</span><span class="s1">)</span>
+
+    <span class="s3">&quot;&quot;&quot; *The % checks to see if there is a remainder equal to 0 to make  
+        sure that it prints an even function  
+       * The sep function fills in the white space between the variable  
+        and the empty quotes with a string &quot;&quot;&quot;</span>
+
+    <span class="s2">for </span><span class="s1">number </span><span class="s2">in </span><span class="s1">range(</span><span class="s5">1</span><span class="s1">, </span><span class="s5">8</span><span class="s1">):</span>
+        <span class="s2">if </span><span class="s1">(number % </span><span class="s5">2 </span><span class="s1">== </span><span class="s5">0</span><span class="s1">):</span>
+            <span class="s1">print(number, </span><span class="s3">&quot; &quot;</span><span class="s1">, sep=</span><span class="s3">&quot; &lt;-- Psst! Hey I think it's one of these!&quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+
+    <span class="s0"># HIT OR MISS EXAMPLE LEVEL CALCULATION</span>
+    <span class="s3">&quot;&quot;&quot;This section of the program consists of holding the number of guesses 
+    the player uses, as well as the area of the game board in which he selects 
+    where he/she would like to fire in order to hit their opponent.&quot;&quot;&quot;</span>
+    <span class="s1">game_board = (</span><span class="s3">&quot; 0 &quot; </span><span class="s1">* </span><span class="s5">6</span><span class="s1">)</span>
+    <span class="s1">list_layout = game_board</span>
+    <span class="s1">print_board(list_layout)</span>
+    <span class="s1">print(</span><span class="s3">&quot; &quot;</span><span class="s1">)</span>
+    <span class="s1">num_guesses = </span><span class="s5">0</span>
+    <span class="s2">while True</span><span class="s1">:</span>
+        <span class="s1">horizontal_guess = int(input(</span><span class="s3">&quot;Place your horizontal guess here: &quot;</span><span class="s1">))</span>
+        <span class="s1">vertical_guess = int(input(</span><span class="s3">&quot;Place your vertical guess here: &quot;</span><span class="s1">))</span>
+        <span class="s1">num_guesses = num_guesses + </span><span class="s5">1</span>
+        <span class="s2">if </span><span class="s1">(horizontal_guess % </span><span class="s5">2 </span><span class="s1">== </span><span class="s5">0 </span><span class="s2">and </span><span class="s1">horizontal_guess &lt; </span><span class="s5">7</span><span class="s1">) </span><span class="s2">and </span><span class="s1">\</span>
+                <span class="s1">(vertical_guess % </span><span class="s5">2 </span><span class="s1">== </span><span class="s5">0 </span><span class="s2">and </span><span class="s1">vertical_guess &lt; </span><span class="s5">7</span><span class="s1">):</span>
+            <span class="s1">print(</span><span class="s3">&quot;HIT! Nice Job!&quot;</span><span class="s1">)</span>
+            <span class="s1">print(</span><span class="s3">&quot;Guess count: &quot;</span><span class="s1">, num_guesses)</span>
+        <span class="s2">if </span><span class="s1">(horizontal_guess &gt;= </span><span class="s5">7 </span><span class="s2">or </span><span class="s1">horizontal_guess % </span><span class="s5">2 </span><span class="s1">!= </span><span class="s5">0</span><span class="s1">) </span><span class="s2">or </span><span class="s1">\</span>
+                <span class="s1">(vertical_guess % </span><span class="s5">2 </span><span class="s1">!= </span><span class="s5">0 </span><span class="s2">and </span><span class="s1">vertical_guess &lt; </span><span class="s5">7</span><span class="s1">):</span>
+            <span class="s1">print(</span><span class="s3">&quot;MISS!, please try again.&quot;</span><span class="s1">)</span>
+            <span class="s1">print(</span><span class="s3">&quot;Guess count: &quot;</span><span class="s1">, num_guesses)</span>
+        <span class="s2">else</span><span class="s1">:</span>
+            <span class="s2">break</span>
+
+
+
+<span class="s2">def </span><span class="s1">get_name():</span>
+    <span class="s1">player_name = input(</span><span class="s3">&quot;Welcome to Battleship! Please enter your name. &quot;</span><span class="s1">)</span>
+    <span class="s1">print(</span><span class="s3">&quot;Hi&quot;</span><span class="s1">, player_name + </span><span class="s3">&quot;,&quot;</span><span class="s1">, </span><span class="s3">&quot;have you played Battleship before?&quot;</span><span class="s1">)</span>
+
+
+    <span class="s2">return </span><span class="s1">player_name</span>
+
+<span class="s2">def </span><span class="s1">print_board(list_layout):</span>
+    <span class="s2">for </span><span class="s1">i </span><span class="s2">in </span><span class="s1">range(</span><span class="s5">6</span><span class="s1">):</span>
+        <span class="s1">print(list_layout)</span>
+
+
+<span class="s1">main()</span>
+</pre>
+</body>
+</html>
